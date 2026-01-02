@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 export async function setRole(formData: FormData) {
   const { sessionClaims } = await auth();
   if (sessionClaims?.metadata?.role !== "admin") {
-    return new NextResponse("Forbidden", { status: 403 });
+    throw new Error("Not Authorized");
   }
 
   const client = await clerkClient();
@@ -28,7 +28,7 @@ export async function setRole(formData: FormData) {
 export async function removeRole(formData: FormData) {
   const { sessionClaims } = await auth();
   if (sessionClaims?.metadata?.role !== "admin") {
-    return new NextResponse("Forbidden", { status: 403 });
+    throw new Error("Not Authorized");
   }
 
   const client = await clerkClient();
