@@ -16,7 +16,7 @@ const isAdminRoute = createRouteMatcher(["/admin(.*)"]);
 export default clerkMiddleware(async (auth, req) => {
   const { isAuthenticated, redirectToSignIn, sessionClaims } = await auth();
 
-  console.log(`role=${sessionClaims?.metadata?.role}`);
+  // console.log(`role=${sessionClaims?.metadata?.role}`);
 
   // 로그인이 필요한 메뉴
   // if (isProtectedRoute(req)) await auth.protect();
